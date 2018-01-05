@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom'; //react router for conf
 import { connect } from 'react-redux';
 import * as actions from '../actions'; //get all the action creators
 import Header from './Header';
+import Landing from './Landing';
 
 //dummy components
 
@@ -14,9 +15,9 @@ const SurveyNew = () =>{
   return <h2>SurveyNew</h2>
 };
 
-const Landing = () =>{
-  return <h2>Landing</h2>
-};
+// const Landing = () =>{
+//   return <h2>Landing</h2>
+// };
 
 class App extends Component{
 
@@ -38,6 +39,6 @@ class App extends Component{
       </div>
     );
   }
-};
+}
 
-export default  connect(null, actions)(App);
+export default connect(null,actions)(App);

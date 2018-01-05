@@ -9,7 +9,13 @@ module.exports = (app) =>{
   );
 
   //handle the callback after login
-  app.get('/auth/google/callback',passport.authenticate('google'));
+  app.get(
+    '/auth/google/callback',passport.authenticate('google'),
+    (req,res) =>{
+      //send the user here after login
+      res.redirect('/surveys');
+    }
+  );
 
   //get current logged in user info
   app.get('/api/current_user',(req,res) =>{
@@ -19,6 +25,6 @@ module.exports = (app) =>{
   //logout the user
   app.get('/api/logout',(req,res) =>{
     req.logout(); //takes the cookie and kills the id
-    res.send(req.user); //this should be undefined if logged out
+    res.redirect('/')
   });
 };

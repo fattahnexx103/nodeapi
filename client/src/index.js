@@ -15,3 +15,6 @@ ReactDOM.render(
   <Provider store = {store}><App /></Provider>, //put the store and app inside the provider
   document.querySelector('#root')
 ); //render the root app component which inturns load all other components
+
+console.log('STRIPE KEY IS', process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+console.log('Environment is', process.env.NODE_ENV);
