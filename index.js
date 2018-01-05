@@ -13,7 +13,7 @@ mongoose.connect(keys.mongoURI); //connects to mongo
 
 const app = express();
 
-//Middleware 
+//Middleware
 app.use(bodyParser.json());
 
 app.use(
@@ -27,6 +27,18 @@ app.use(passport.session());
 
 authRoutes(app); //uses the app from the file and attaches express to it
 billingRoutes(app);
+
+//only for deployment purposes
+if(process.env.NODE_ENV ==== 'production'){
+  //Express will serve up production assets like main.js or main.css profile
+  app.use(express.static('client/build'));
+  //Express will serve up index.html file if it doesnt recognize route
+  const path = require('path');
+  app.get('*', (req, res) =>{
+    res.sendFile(path.resolve(__dirname, 'client','build','index.html'));
+  });
+  
+}
 
 app.get('/', (req,res) =>{
   res.send(
