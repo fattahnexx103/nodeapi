@@ -29,7 +29,7 @@ authRoutes(app); //uses the app from the file and attaches express to it
 billingRoutes(app);
 
 //only for deployment purposes
-if(process.env.NODE_ENV ==== 'production'){
+if(process.env.NODE_ENV === 'production'){
   //Express will serve up production assets like main.js or main.css profile
   app.use(express.static('client/build'));
   //Express will serve up index.html file if it doesnt recognize route
@@ -37,7 +37,7 @@ if(process.env.NODE_ENV ==== 'production'){
   app.get('*', (req, res) =>{
     res.sendFile(path.resolve(__dirname, 'client','build','index.html'));
   });
-  
+
 }
 
 app.get('/', (req,res) =>{
