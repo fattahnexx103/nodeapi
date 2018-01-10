@@ -3,11 +3,15 @@ const mongoose =  require('mongoose');
 const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
+
 require('./models/User.js'); //make sure this goes first
 require('./services/passportService.js'); //since we not using it in a variable
+require('./models/Survey'); // not using module.exports
+
 const keys = require('./config/keys');
 const authRoutes = require('./routes/authRoutes.js');
 const billingRoutes = require('./routes/billingRoutes.js');
+const surveyRoutes = require('./routes/surveyRoutes.js');
 
 mongoose.connect(keys.mongoURI); //connects to mongo
 
@@ -27,6 +31,8 @@ app.use(passport.session());
 
 authRoutes(app); //uses the app from the file and attaches express to it
 billingRoutes(app);
+surveyRoutes(app);
+
 
 //only for deployment purposes
 if(process.env.NODE_ENV === 'production'){
