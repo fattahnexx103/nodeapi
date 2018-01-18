@@ -21,3 +21,13 @@ export const fetchToken = (token) =>{
       });
   };
 };
+
+export const submitSurvey = (values, history)=>{
+  return function(dispatch){
+     Axios.post('/api/surveys', values)
+      .then((res) =>{
+          history.push('/surveys');
+          dispatch({ type: FETCH_USER, payload: res.data});
+      });
+  };
+};

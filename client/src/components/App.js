@@ -4,16 +4,18 @@ import { connect } from 'react-redux';
 import * as actions from '../actions'; //get all the action creators
 import Header from './Header';
 import Landing from './Landing';
+import Dashboard from './Dashboard';
+import SurveyNew from './surveys/SurveyNew';
 
 //dummy components
 
-const Dashboard = () =>{
-  return <h2>Dashboard</h2>
-};
+// const Dashboard = () =>{
+//   return <h2>Dashboard</h2>
+// };
 
-const SurveyNew = () =>{
-  return <h2>SurveyNew</h2>
-};
+// const SurveyNew = () =>{
+//   return <h2>SurveyNew</h2>
+// };
 
 // const Landing = () =>{
 //   return <h2>Landing</h2>
@@ -31,8 +33,8 @@ class App extends Component{
         <BrowserRouter>
           <div>
             <Header />
-            <Route exact = {true} path="/" component = {Landing} />
-            <Route exact = {true} path='/surveys' component = {Dashboard} />
+            <Route exact path="/" component = {Landing} />
+            <Route exact path='/surveys' component = {Dashboard} />
             <Route path='/surveys/new' component = {SurveyNew} />
           </div>
         </BrowserRouter>
